@@ -1,0 +1,55 @@
+﻿@model DistribuidoraDoChines.Commons.Models.Telefones
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Telefones</h4>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-4">
+            Cliente
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdClienteNavigation.Email)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Residencial)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Residencial)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Comercial)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Comercial)
+        </dd>
+        <dt class="col-sm-4">
+            Criado em
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt class="col-sm-4">
+            Atualizado em
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>

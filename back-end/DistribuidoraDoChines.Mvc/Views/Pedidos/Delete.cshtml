@@ -1,0 +1,73 @@
+﻿@model DistribuidoraDoChines.Commons.Models.Pedidos
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Deletar</h1>
+
+<h3>Você tem certeza que deseja deletar?</h3>
+<div>
+    <h4>Pedidos</h4>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt class="col-sm-4">
+            Frete
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ValorFrete)
+        </dd>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Troco)
+        </dd>
+        <dt class="col-sm-4">
+            Cliente
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdClienteNavigation.Email)
+        </dd>
+        <dt class="col-sm-4">
+            Endereço
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdClienteEnderecoNavigation.Nome)
+        </dd>
+        <dt class="col-sm-4">
+            Tipo de pagamento
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdTiposDePagamentoNavigation.Descricao)
+        </dd>
+        <dt class="col-sm-4">
+            Criado em
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt class="col-sm-4">
+            Atualizado em
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id"/>
+        <input type="submit" value="Deletar" class="btn btn-danger"/> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>

@@ -1,0 +1,75 @@
+﻿@model DistribuidoraDoChines.Commons.Models.Pedidos
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Editar</h1>
+
+<h4>Pedidos</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="IdCliente" class="control-label">Cliente</label>
+                <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente"></select>
+                <span asp-validation-for="IdCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdClienteEndereco" class="control-label">Endereço</label>
+                <select asp-for="IdClienteEndereco" class="form-control" asp-items="ViewBag.IdClienteEndereco"></select>
+                <span asp-validation-for="IdClienteEndereco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTiposDePagamento" class="control-label">Tipo de pagamento</label>
+                <select asp-for="IdTiposDePagamento" class="form-control" asp-items="ViewBag.IdTiposDePagamento"></select>
+                <span asp-validation-for="IdTiposDePagamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Data" type="hidden"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="ValorEmReais" class="form-control"/>
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Valor" hidden/>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorFrete" class="control-label">Frete</label>
+                <input asp-for="ValorFreteEmReais" class="form-control"/>
+                <span asp-validation-for="ValorFrete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="ValorFrete" hidden/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Troco" class="control-label">Frete</label>
+                <input asp-for="TrocoEmReais" class="form-control"/>
+                <span asp-validation-for="Troco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Troco" hidden/>
+            </div>
+            <div class="form-group">
+                <input asp-for="CreatedAt" type="hidden"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

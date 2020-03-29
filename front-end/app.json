@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "android": {
+      "package": "www.distribuidoradochines.com",
+      "versionCode": 5
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "description": "App de delivery da Distribuidora do Chinês",
+    "icon": "./assets/images/icon.png",
+    "ios": {
+      "bundleIdentifier": "www.distribuidoradochines.com",
+      "supportsTablet": true
+    },
+    "name": "Distribuidora do Chinês",
+    "orientation": "portrait",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "privacy": "public",
+    "sdkVersion": "33.0.0",
+    "slug": "distribuidora-do-chines",
+    "splash": {
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "version": "1.1.0"
+  }
+}

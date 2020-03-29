@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AspNetCore.HealthChecks.MySql" Version="2.2.0" />
+      <PackageReference Include="GoogleMaps.LocationServices" Version="1.2.0.2" />
+      <PackageReference Include="MailKit" Version="2.5.2" />
+      <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.2.5" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,53 @@
+﻿@model DistribuidoraDoChines.Commons.Models.Telefones
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Editar</h1>
+
+<h4>Telefones</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="IdCliente" class="control-label">Cliente</label>
+                <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente"></select>
+                <span asp-validation-for="IdCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Residencial" class="control-label"></label>
+                <input asp-for="Residencial" class="form-control"/>
+                <span asp-validation-for="Residencial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comercial" class="control-label"></label>
+                <input asp-for="Comercial" class="form-control"/>
+                <span asp-validation-for="Comercial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Celular" class="control-label"></label>
+                <input asp-for="Celular" class="form-control"/>
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="CreatedAt" type="hidden"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
