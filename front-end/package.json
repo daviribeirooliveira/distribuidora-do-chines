@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "axios": "^0.18.0",
+    "expo": "^33.0.0",
+    "native-base": "^2.13.7",
+    "react": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-awesome-alerts": "^1.2.0",
+    "react-navigation": "^3.9.1",
+    "react-redux": "6.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "babel-preset-expo": "^5.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "prettier": "^1.19.1"
+  },
+  "main": "node_modules/expo/AppEntry.js",
+  "private": true,
+  "scripts": {
+    "android": "expo start --android",
+    "build": "expo build:android -t app-bundle",
+    "eject": "expo eject",
+    "ios": "expo start --ios",
+    "lint": "eslint *.js **/*.js",
+    "publish": "expo build:android -t app-bundle",
+    "start": "expo start"
+  }
+}

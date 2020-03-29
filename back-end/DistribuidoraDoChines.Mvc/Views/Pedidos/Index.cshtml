@@ -1,0 +1,159 @@
+﻿@model DistribuidoraDoChines.Commons.Models.PaginatedList<DistribuidoraDoChines.Commons.Models.Pedidos>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Pedidos</h1>
+
+<p>
+    <a asp-action="Create">Criar</a>
+</p>
+
+<form asp-controller="Pedidos" asp-action="Index" method="get" class="form-inline">
+    <div class="form-group mx-sm-8 mb-2">
+        <input type="text" name="searchString" placeholder="Pedido ou Cliente..." class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["PedidoSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Pedido</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["DataSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Data</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["ClienteSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Cliente</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["EnderecoSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Endereço</a>
+        </th>
+        <th>
+            Rua
+        </th>
+        <th>
+            Número
+        </th>
+        <th>
+            Bairro
+        </th>
+        <th>
+            Complemento
+        </th>
+        <th>
+            Referência
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["ValorSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Valor</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["FreteSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Frete</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["TrocoSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Troco</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["TipoDePagamentoSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Tipo de pagamento</a>
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Atalhos
+        </th>
+        <th>
+            Ações
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="background-color:@item.GetStatusColor()">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @if (item.Data != null)
+                {
+                    @item.Data.Value.AddHours(4)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteNavigation.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteEnderecoNavigation.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteEnderecoNavigation.Rua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteEnderecoNavigation.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteEnderecoNavigation.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteEnderecoNavigation.Complemento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteEnderecoNavigation.Referencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorFrete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Troco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTiposDePagamentoNavigation.Descricao)
+            </td>
+            <td>
+                <button onclick="location.href='@Url.Action("EditStatus", "Pedidos", new {item.Id, Status = "Em Atendimento"})'" style="margin-bottom: 5px" class="btn btn-warning">Status: Em Atendimento</button>
+                <button onclick="location.href='@Url.Action("EditStatus", "Pedidos", new {item.Id, Status = "Finalizado"})'" class="btn btn-success">Status: Finalizado</button>
+            </td>
+            <td>
+                <a asp-action="FindCliente" asp-route-IdCliente="@item.IdCliente">Cliente</a> |
+                <a asp-action="FindEndereco" asp-route-IdClienteEndereco="@item.IdClienteEndereco">Endereço</a> |
+                <a asp-action="FindDetalhes" asp-route-IdPedido="@item.Id">Produtos</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a> |
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Anterior
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Próximo
+</a>

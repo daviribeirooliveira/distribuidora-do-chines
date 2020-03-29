@@ -1,0 +1,65 @@
+﻿@model DistribuidoraDoChines.Commons.Models.Pedidos
+
+@{
+    ViewData["Title"] = "Criar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Criar</h1>
+
+<h4>Pedidos</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdCliente" class="control-label">Cliente</label>
+                <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdClienteEndereco" class="control-label">Endereço</label>
+                <select asp-for="IdClienteEndereco" class="form-control" asp-items="ViewBag.IdClienteEndereco"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTiposDePagamento" class="control-label">Tipo de pagamento</label>
+                <select asp-for="IdTiposDePagamento" class="form-control" asp-items="ViewBag.IdTiposDePagamento"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="ValorEmReais" type="number" step=".01" class="form-control"/>
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Valor" hidden/>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorFrete" class="control-label">Frete</label>
+                <input asp-for="ValorFreteEmReais" type="number" step=".01" class="form-control"/>
+                <span asp-validation-for="ValorFrete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="ValorFrete" hidden/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Troco" class="control-label">Frete</label>
+                <input asp-for="TrocoEmReais" type="number" step=".01" class="form-control"/>
+                <span asp-validation-for="Troco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Troco" hidden/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

@@ -1,0 +1,78 @@
+﻿@model DistribuidoraDoChines.Commons.Models.Produtos
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Deletar</h1>
+
+<h3>Você tem certeza que deseja deletar?</h3>
+<div>
+    <h4>Produtos</h4>
+    <hr/>
+    <div>
+        <div class="row">
+            <div class="col-md-8">
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        Categoria
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.IdCategoriaNavigation.Descricao)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Preco)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Preco)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Unidade)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Unidade)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+                    <dt class="col-sm-4">
+                        Criado em
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.CreatedAt)
+                    </dd>
+                    <dt class="col-sm-4">
+                        Atualizado em
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.UpdatedAt)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @if (Model.Imagem != null)
+                    {
+                        <img src=" data:image/png;charset=utf-8;base64,@Convert.ToBase64String(Model.Imagem)" class="rounded" height="240" width="240" alt=""/>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id"/>
+        <input type="submit" value="Deletar" class="btn btn-danger"/> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>
