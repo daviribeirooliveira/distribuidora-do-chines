@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "axios": "^0.18.0",
-    "expo": "^33.0.0",
+    "expo": "^48.0.0",
     "native-base": "^2.13.7",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
